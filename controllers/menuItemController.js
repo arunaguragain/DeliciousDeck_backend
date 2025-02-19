@@ -38,29 +38,29 @@ const getMenuItem = async (req, res) => {
     }
 };
 // Update a menu item
-const updateMenuItem = async (req, res) => {
-    try {
-        const id = parseInt(req.params.id, 10);
-        if (isNaN(id)) return res.status(400).json({ message: "Invalid menu item ID." });
+// const updateMenuItem = async (req, res) => {
+//     try {
+//         const id = parseInt(req.params.id, 10);
+//         if (isNaN(id)) return res.status(400).json({ message: "Invalid menu item ID." });
 
-        const { name, description, price, category } = req.body;
-        const menuItem = await MenuItem.findByPk(id);
+//         const { name, description, price, category } = req.body;
+//         const menuItem = await MenuItem.findByPk(id);
         
-        if (!menuItem) {
-            return res.status(404).json({ message: 'Menu item not found' });
-        }
+//         if (!menuItem) {
+//             return res.status(404).json({ message: 'Menu item not found' });
+//         }
 
-        menuItem.name = name || menuItem.name;
-        menuItem.description = description || menuItem.description;
-        menuItem.price = price || menuItem.price;
-        menuItem.category = category || menuItem.category;
+//         menuItem.name = name || menuItem.name;
+//         menuItem.description = description || menuItem.description;
+//         menuItem.price = price || menuItem.price;
+//         menuItem.category = category || menuItem.category;
 
-        await menuItem.save();
-        res.status(200).json(menuItem);
-    } catch (err) {
-        res.status(500).json({ message: 'Error updating menu item', error: err.message });
-    }
-};
+//         await menuItem.save();
+//         res.status(200).json(menuItem);
+//     } catch (err) {
+//         res.status(500).json({ message: 'Error updating menu item', error: err.message });
+//     }
+// };
 
 // Delete a menu item
 const deleteMenuItem = async (req, res) => {
