@@ -5,11 +5,10 @@ const sequelize = require('./database/db');
 const userRoute = require('./routes/userRoute');
 const reservationRoute = require('./routes/reservationRoute');
 const reviewRoute = require('./routes/reviewRoute');
-const orderRoute = require('./routes/orderRoute');
-const deliveryRoute = require('./routes/deliveryRoute');
 const menuItemRoute = require('./routes/menuItemRoute');
-const orderMenuItemRoute = require('./routes/orderMenuItemRoute');
-const productRoute = require('./routes/productRoute')
+const productRoute = require('./routes/productRoute');
+const authMiddleware = require('./middleware/authorization');  // ✅ Import middleware
+
 
 // Creating a Server
 const app = express();
@@ -27,20 +26,25 @@ app.get('/', (req, res) => {
   res.send("Welcome to Delicious Deck API");
 });
 
+app.get('/admin-dashboard', authMiddleware(['admin']), (req, res) => {
+  res.json({ message:  `Welcome Admin, ${req.user.email}!` });
+});
+
+
 // Use routes
 app.use('/products', productRoute);
 app.use('/users', userRoute);  // Authentication routes
 app.use('/reservations', reservationRoute);  // Reservation routes
 app.use('/reviews', reviewRoute);  // Review routes
-app.use('/orders', orderRoute);  // Order routes
-app.use('/deliveries', deliveryRoute);  // Delivery routes
+
+
 app.use('/menu', menuItemRoute);  // Menu Item routes
-app.use('/order-menu-items', orderMenuItemRoute);  // Order Menu Item routes
+ // Order Menu Item routes
 app.use('/uploads', express.static('uploads'));
 
 
 // Sequelize synchronization with database
-sequelize.sync({ force: false })
+sequelize.sync({ alter : true })
   .then(() => {
     console.log('Database synced successfully');
   })

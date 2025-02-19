@@ -80,4 +80,4 @@ const deleteMenuItem = async (req, res) => {
     }
 };
 
-module.exports = { createMenuItem, getMenuItems, getMenuItem, updateMenuItem, deleteMenuItem };
+module.exports = { createMenuItem, getMenuItems, getMenuItem, deleteMenuItem };

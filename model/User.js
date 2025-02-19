@@ -14,7 +14,8 @@ const User = sequelize.define('Users',{
         type: DataTypes.DATE
     },
     email: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     address: {
         type: DataTypes.STRING
@@ -23,10 +24,18 @@ const User = sequelize.define('Users',{
         type:DataTypes.STRING,
 
     },
+    role: {
+        type: DataTypes.STRING,
+        defaultValue: 'user'
+    },
     profilePicture: {
         type: DataTypes.STRING,
         allowNull: true, 
       },
+    }, {
+        tableName: 'Users',  // ✅ Ensure Sequelize uses the correct table name
+        timestamps: false  
+      
 })
 
 module.exports = User;

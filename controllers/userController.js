@@ -134,6 +134,17 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const  User  = require('../model/User');
 
+// const hashPassword = async () => {
+//     const hashedPassword = await bcrypt.hash('admin123', 10);  // Change 'admin123' to your actual password
+//     console.log(`Hashed Password: ${hashedPassword}`);
+// };
+
+// hashPassword();
+
+//admin@example.com
+//admin123
+
+
 // Register a new user
 const registerUser = async (req, res) => {
     try {
@@ -154,7 +165,8 @@ const registerUser = async (req, res) => {
             dob,
             email,
             address,
-            password: hashedPassword  // Store the hashed password
+            password: hashedPassword,
+            role: 'user'  
         });
 
         res.status(201).json({ message: 'User registered successfully', user });
@@ -182,7 +194,7 @@ const loginUser = async (req, res) => {
 
         // Generate JWT token
         const token = jwt.sign(
-            { userId: user.userId, email: user.email }, // Using email and userId
+            { userId: user.userId, email: user.email, role: user.role }, // Using email and userId
             'your_jwt_secret_key',  // Replace with an actual secret key
             { expiresIn: '1h' }
         );

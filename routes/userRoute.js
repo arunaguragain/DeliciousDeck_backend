@@ -20,7 +20,7 @@ const express = require('express');
 const router = express.Router();
 const upload = require('../middleware/imageUpload')
 const authMiddleware  = require('../middleware/authorization');
-const { registerUser, loginUser, getProfile, updateProfile, updateProfilePicture  } = require('../controllers/userController');
+const { registerUser, loginUser, getProfile, updateProfile,  } = require('../controllers/userController');
 
 // Register route
 router.post('/register', registerUser);  // Register user
@@ -38,6 +38,9 @@ router.put('/profile', authMiddleware, upload.single('profilePic'), updateProfil
 // router.put('/profile', authMiddleware, updateProfile);
 // router.put('/updateProfilePicture', authMiddleware,upload.single('profilePicture'), updateProfilePicture);
 
+router.get('/admin-dashboard', authMiddleware(['admin']), (req, res) => {
+    res.json({ message: 'Welcome Admin!' });
+});
 
 module.exports = router;
   
