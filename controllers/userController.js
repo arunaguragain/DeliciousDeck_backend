@@ -238,6 +238,11 @@ const updateProfile = async (req, res) => {
         user.address = address || user.address;
         user.email = email || user.email;
 
+        if (req.file) {
+            user.profilePicture = req.file.path;
+          }
+          
+
         await user.save();
 
         res.status(200).json({ message: 'Profile updated successfully', user });

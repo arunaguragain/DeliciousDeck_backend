@@ -1,5 +1,3 @@
-
-// Initialization
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -55,7 +53,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-sequelize.sync({ alter: true });
+// sequelize.sync({ alter: true });
 
 
 
