@@ -34,7 +34,7 @@ app.use('/reservations', reservationRoute);  // Reservation routes
 app.use('/reviews', reviewRoute);  // Review routes
 app.use('/orders', orderRoute);  // Order routes
 app.use('/deliveries', deliveryRoute);  // Delivery routes
-app.use('/menu-items', menuItemRoute);  // Menu Item routes
+app.use('/menu', menuItemRoute);  // Menu Item routes
 app.use('/order-menu-items', orderMenuItemRoute);  // Order Menu Item routes
 app.use('/uploads', express.static('uploads'));
 

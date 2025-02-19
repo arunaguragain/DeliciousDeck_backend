@@ -22,6 +22,9 @@ const MenuItem = sequelize.define('MenuItem', {
     UseruserId: {
         type: DataTypes.INTEGER
     }
+    },{
+        tableName: 'menu_items',
+        timestamps: true
 });
 
 module.exports = MenuItem;
