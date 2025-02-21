@@ -44,20 +44,20 @@ app.use('/uploads', express.static('uploads'));
 
 
 // Sequelize synchronization with database
-sequelize.sync({ alter : true })
-  .then(() => {
-    console.log('Database synced successfully');
-  })
-  .catch((err) => {
-    console.log('Error syncing database: ', err);
-  });
+// sequelize.sync({ alter : true })
+//   .then(() => {
+//     console.log('Database synced successfully');
+//   })
+//   .catch((err) => {
+//     console.log('Error syncing database: ', err);
+//   });
 
 // Running the server on PORT
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-// sequelize.sync({ alter: true });
+
 
 
 

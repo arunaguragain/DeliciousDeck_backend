@@ -18,18 +18,18 @@ const {
 } = reservationController;
 
 // Create a reservation route (POST)
-router.post('/create', authMiddleware, createReservation);
+router.post('/create', authMiddleware(), createReservation);
 
 // Get all reservations route (GET)
-router.get('/', authMiddleware, getReservations);
+router.get('/', authMiddleware(), getReservations);
 
 // Get a specific reservation by ID route (GET)
-router.get('/:id', authMiddleware, getReservation);
+router.get('/:id', authMiddleware(), getReservation);
 
 // Update a reservation route (PUT)
-router.put('/:id', authMiddleware, updateReservation);
+router.put('/:id', authMiddleware(), updateReservation);
 
 // Delete a reservation route (DELETE)
-router.delete('/:id', authMiddleware, deleteReservation);
+router.delete('/:id', authMiddleware(), deleteReservation);
 
 module.exports = router;

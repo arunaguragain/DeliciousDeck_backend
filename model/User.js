@@ -33,7 +33,7 @@ const User = sequelize.define('Users',{
         allowNull: true, 
       },
     }, {
-        tableName: 'Users',  // ✅ Ensure Sequelize uses the correct table name
+        tableName: 'Users',  
         timestamps: false  
       
 })
