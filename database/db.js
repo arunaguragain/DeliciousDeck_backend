@@ -8,16 +8,16 @@ const sequelize = new Sequelize('DeliciousDeckWeb', 'postgres', 'postgres',{
     logging: false,
 });
 
-async function testConnection() {
-    try{
-        await sequelize.authenticate();
-        console.log('DB connection successful............................')
-    }
-    catch(error){
-        console.error('Unable to connect to the database...............', error)
+// async function testConnection() {
+//     try{
+//         await sequelize.authenticate();
+//         console.log('DB connection successful............................')
+//     }
+//     catch(error){
+//         console.error('Unable to connect to the database...............', error)
 
-}    
-}
-testConnection()
+// }    
+// }
+// testConnection()
 
 module.exports = sequelize;
