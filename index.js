@@ -6,7 +6,6 @@ const userRoute = require('./routes/userRoute');
 const reservationRoute = require('./routes/reservationRoute');
 const reviewRoute = require('./routes/reviewRoute');
 const menuItemRoute = require('./routes/menuItemRoute');
-const productRoute = require('./routes/productRoute');
 const authMiddleware = require('./middleware/authorization');  
 
 const app = express();
@@ -24,8 +23,6 @@ app.get('/admin-dashboard', authMiddleware(['admin']), (req, res) => {
   res.json({ message:  `Welcome Admin, ${req.user.email}!` });
 });
 
-
-app.use('/products', productRoute);
 app.use('/users', userRoute);  
 app.use('/reservations', reservationRoute);  
 app.use('/reviews', reviewRoute);  
@@ -43,10 +40,10 @@ app.use('/uploads', express.static('uploads'));
 
 // Running the server on PORT
 
-module.exports = app;
-app.listen(PORT, () => {
-  // console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;   // test ko laagi rakheko
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);    // test ko laagi comment gareko 3 line 
+// });
 
 
 
