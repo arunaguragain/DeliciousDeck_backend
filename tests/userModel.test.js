@@ -1,6 +1,5 @@
 const SequelizeMock = require("sequelize-mock");
 const dbMock = new SequelizeMock();
-
 // Define a mock User model
 const UserMock = dbMock.define('Users', {
   userId: 1,

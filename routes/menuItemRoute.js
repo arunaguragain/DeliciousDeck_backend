@@ -12,7 +12,6 @@ router.get('/:id', getMenuItem);
 router.post('/create', authMiddleware(), createMenuItem);
 
 
-
 // Protected route: Delete a menu item (Requires Authentication)
 router.delete('/:id', authMiddleware(), deleteMenuItem);
 

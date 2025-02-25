@@ -23,7 +23,7 @@ const MenuItem = sequelize.define('MenuItem', {
         type: DataTypes.INTEGER
     }
     },{
-        tableName: 'menu_items',
+        tableName: 'MenuItems',
         timestamps: true
 });
 

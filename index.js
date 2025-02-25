@@ -29,21 +29,11 @@ app.use('/reviews', reviewRoute);
 app.use('/menu', menuItemRoute);  
 app.use('/uploads', express.static('uploads'));
 
-// Sequelize synchronization with database
-// sequelize.sync({ alter : true })
-//   .then(() => {
-//     console.log('Database synced successfully');
-//   })
-//   .catch((err) => {
-//     console.log('Error syncing database: ', err);
-//   });
 
-// Running the server on PORT
-
-module.exports = app;   // test ko laagi rakheko
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);    // test ko laagi comment gareko 3 line 
-// });
+// module.exports = app;   // test ko laagi rakheko
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);   
+});
 
 
 

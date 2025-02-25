@@ -8,7 +8,6 @@ if (!reservationController.createReservation) {
     console.error("createReservation function is undefined!");
 }
 
-
 const { 
     createReservation, 
     getReservations, 

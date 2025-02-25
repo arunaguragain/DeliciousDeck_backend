@@ -8,10 +8,6 @@ router.post('/register', registerUser);
 
 router.post('/login', loginUser);  
 
-// router.get('/profile', getProfile);
-// router.put('/profile', updateProfile);
-// router.put('/profile/picture', updateProfilePicture);
-
 router.get('/profile', authMiddleware(), getProfile);
 router.put('/profile', authMiddleware(), upload.single('profilePic'), updateProfile);
 
