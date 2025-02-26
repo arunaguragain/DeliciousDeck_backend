@@ -3,23 +3,22 @@ const jwt = require('jsonwebtoken');
 const  User  = require('../model/User');
 
 // const hashPassword = async () => {
-//     const hashedPassword = await bcrypt.hash('admin123', 10);  // Change 'admin123' to your actual password
+//     const hashedPassword = await bcrypt.hash('admin123', 10);  
 //     console.log(`Hashed Password: ${hashedPassword}`);
 // };
 
 // hashPassword();
 
-//admin@example.com
-//admin123
-
+//admin@example.com: admin email
+//admin123: admin password
 
 // Register a new user
 const registerUser = async (req, res) => {
     try {
-        const { fullName, dob, email, address, password, role } = req.body; // Updated to match model fields
+        const { fullName, dob, email, address, password, role } = req.body; 
 
         // Check if user already exists
-        const userExists = await User.findOne({ where: { email } }); // Check by email instead of username
+        const userExists = await User.findOne({ where: { email } }); 
         if (userExists) {
             return res.status(400).json({ message: 'User already exists' });
         }
@@ -48,7 +47,7 @@ const registerUser = async (req, res) => {
 // Login a user
 const loginUser = async (req, res) => {
     try {
-        const { email, password } = req.body; // Changed to use email for login
+        const { email, password } = req.body; 
 
         // Find user by email
         const user = await User.findOne({ where: { email } });
@@ -65,7 +64,7 @@ const loginUser = async (req, res) => {
         // Generate JWT token
         const token = jwt.sign(
             { userId: user.userId, email: user.email, role: user.role }, // Using email and userId
-            'your_jwt_secret_key',  // Replace with an actual secret key
+            'your_jwt_secret_key',  
             { expiresIn: '1h' }
         );
 
@@ -78,7 +77,7 @@ const loginUser = async (req, res) => {
 const getProfile = async (req, res) => {
     try {
         // Verify the token and extract user ID
-        const token = req.headers.authorization.split(' ')[1]; // Assuming token is passed as Bearer token
+        const token = req.headers.authorization.split(' ')[1]; 
         const decoded = jwt.verify(token, 'your_jwt_secret_key');
         
         // Fetch the user from the database using userId
@@ -93,7 +92,7 @@ const getProfile = async (req, res) => {
             email: user.email,
             dob: user.dob,
             address: user.address,
-            profilePicture: user.profilePicture, // If you have a profile picture column
+            profilePicture: user.profilePicture, 
         });
     } catch (err) {
         res.status(500).json({ message: 'Error retrieving profile', error: err.message });
@@ -137,7 +136,7 @@ const updateProfilePicture = async (req, res) => {
     try {
         // Get the token from Authorization header
         const token = req.headers.authorization.split(' ')[1];
-        const decoded = jwt.verify(token, 'your_jwt_secret_key'); // Verify token
+        const decoded = jwt.verify(token, 'your_jwt_secret_key'); 
 
         // Find user in the database using the decoded userId
         const user = await User.findOne({ where: { userId: decoded.userId } });
@@ -169,9 +168,5 @@ const updateProfilePicture = async (req, res) => {
         });
     }
 };
-
-
-
-
 
 module.exports = { registerUser, loginUser, getProfile, updateProfile, updateProfilePicture };
