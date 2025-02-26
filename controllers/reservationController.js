@@ -5,9 +5,9 @@ const createReservation = async (req, res) => {
     try {
         const { name, email, phone, reservationDate, reservationTime, guestCount, tableNo, UseruserId } = req.body;
         const reservation = await Reservation.create({
-            name,           // Added name
-            email,          // Added email
-            phone,          // Added phone
+            name,           
+            email,         
+            phone,          
             reservationDate,
             reservationTime,
             guestCount,
@@ -86,7 +86,6 @@ const deleteReservation = async (req, res) => {
     }
 };
 
-// Export the functions at the end
 module.exports = { 
     createReservation, 
     getReservations, 
