@@ -42,7 +42,7 @@ it('should get user profile', async () => {
     .set('Authorization', `Bearer ${authToken}`);
 
   expect(res.status).toBe(200);
-  expect(res.body).toHaveProperty('fullName'); // Directly checking properties
+  expect(res.body).toHaveProperty('fullName'); 
   expect(res.body.fullName).toBe('John Doe');
 });
 
@@ -50,9 +50,8 @@ it('should return unauthorized for protected routes without token', async () => 
   const res = await request(app).get('/users/profile');
 
   expect([401, 403]).toContain(res.status);
-  expect(res.body.message).toMatch(/unauthorized|access denied/i); // More flexible match
+  expect(res.body.message).toMatch(/unauthorized|access denied/i); 
 });
-
 
 afterAll(async () => {
   if (userId) {

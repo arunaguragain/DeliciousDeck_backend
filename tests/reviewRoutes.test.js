@@ -48,7 +48,6 @@ describe('Review Routes', () => {
         serviceId: 2
       });
 
-    // Asserting that the review creation was successful and the correct status code is returned
     expect(res.status).toBe(201);
     expect(res.body.reviewText).toBe('Great service!');
   });
@@ -117,14 +116,12 @@ describe('Review Routes', () => {
       .send({ reviewText: 'Updated review', rating: 4 });
   
     // Ensure save method was called and the updated review is returned
-    expect(mockReview.save).toHaveBeenCalled(); // Ensure that save was called
+    expect(mockReview.save).toHaveBeenCalled(); 
     expect(res.status).toBe(200);
     expect(res.body.reviewText).toBe('Updated review'); // Expect the updated text
     expect(res.body.rating).toBe(4); // Ensure the rating is updated as well
   });
   
-  
-
   // Test Case 6: Should delete a review
   it('should delete a review', async () => {
     // Mocking Review.findByPk to return an existing review and enabling the destroy method

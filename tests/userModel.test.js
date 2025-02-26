@@ -38,7 +38,7 @@ describe('User Model', () => {
     try {
       await UserMock.create({ fullName: 'No Email' });
     } catch (error) {
-      expect(error.message).toContain("email cannot be null");  // Adjust based on your validation logic
+      expect(error.message).toContain("email cannot be null");  
     }
   });
 

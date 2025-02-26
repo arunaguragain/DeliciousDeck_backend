@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../index.js');
-const jwt = require('jsonwebtoken'); // Import jwt
-const Reservation = require('../model/Reservation'); // Import the Reservation model
+const jwt = require('jsonwebtoken'); 
+const Reservation = require('../model/Reservation'); 
 
 // Mock JWT verify method to simulate authentication
 jest.mock('jsonwebtoken');
@@ -9,7 +9,7 @@ jest.mock('../model/Reservation');
 
 // Mock Authorization Middleware
 jest.mock('../middleware/authorization.js', () => jest.fn(() => (req, res, next) => {
-  req.user = { userId: 1 };  // Ensure mock userId is set correctly
+  req.user = { userId: 1 };  
   next();
 }));
 
@@ -18,7 +18,7 @@ describe('Reservation Routes', () => {
 
   // Generate a mock authentication token
   const mockAuthToken = () => {
-    return jwt.sign({ userId: 1 }, 'your_jwt_secret_key');  // Ensure it matches server logic
+    return jwt.sign({ userId: 1 }, 'your_jwt_secret_key');  
   };
 
   beforeAll(() => {
