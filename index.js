@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const sequelize = require('./database/db');
-const userRoute = require('./routes/userRoute');
-const reservationRoute = require('./routes/reservationRoute');
-const reviewRoute = require('./routes/reviewRoute');
-const menuItemRoute = require('./routes/menuItemRoute');
-const authMiddleware = require('./middleware/authorization');  
+const sequelize = require('./database/db');  //importing database
+const userRoute = require('./routes/userRoute');  //importing user route
+const reservationRoute = require('./routes/reservationRoute');  //importing reservation Route
+const reviewRoute = require('./routes/reviewRoute');  // importing review route
+const menuItemRoute = require('./routes/menuItemRoute');  // importing menuItem route
+const authMiddleware = require('./middleware/authorization');  // importing middleware
 
 const app = express();
 const PORT = process.env.PORT || 5001;
