@@ -7,34 +7,34 @@ const Reservation = sequelize.define('Reservation', {
     primaryKey: true,
     autoIncrement: true
   },
-  name: {  // Added name field from BookingForm
+  name: {  
     type: DataTypes.STRING,
     allowNull: false
   },
-  email: {  // Added email field from BookingForm
+  email: {  
     type: DataTypes.STRING,
     allowNull: false
   },
-  phone: {  // Added phone field from BookingForm
+  phone: { 
     type: DataTypes.STRING,
     allowNull: false
   },
-  reservationDate: {  // Updated to use reservationDate from BookingForm
+  reservationDate: {  
     type: DataTypes.DATE,
     allowNull: false
   },
-  reservationTime: {  // Updated to use reservationTime from BookingForm
+  reservationTime: {  
     type: DataTypes.TIME,
     allowNull: false
   },
-  guestCount: {  // Updated to use guests field from BookingForm
+  guestCount: {  
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  tableNo: {  // Added tableNo as a field in case you want to manage reservations by table number
+  tableNo: {  
     type: DataTypes.INTEGER
   },
-  UseruserId: {  // This links the reservation to a user, assuming you have a User model for authentication
+  UseruserId: {  
     type: DataTypes.INTEGER,
   }
 });
